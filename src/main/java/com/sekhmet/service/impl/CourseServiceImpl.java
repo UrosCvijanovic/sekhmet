@@ -26,10 +26,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void createCourse(Course course) {
-
-        Integer instr_id = course.getInstructor_id();
-
-        Optional<User> userOptional = userRepo.findById(Long.valueOf(instr_id));
+        User instr_id = course.getInstructor_id();
+        Optional<User> userOptional = userRepo.findById(Long.valueOf(instr_id.getId()));
 
         if(!userOptional.isPresent()){
             throw new IllegalStateException("Wrong instuctor id");

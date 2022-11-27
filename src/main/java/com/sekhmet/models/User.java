@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -28,6 +30,9 @@ public class User {
     private String first_name;
     @Column(name = "last_name", nullable = false, length = 45)
     private String last_name;
+
+    @OneToMany(mappedBy = "instructor_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Course> instructorsClasses = new ArrayList<>();
 
     @Override
     public String toString() {

@@ -19,6 +19,7 @@ public class CourseController {
     @PostMapping(
             value = "/createCourse", consumes = "application/json", produces = "application/json")
     public void saveUser(@RequestBody Course course){
+        System.out.println(course);
         courseService.createCourse(course);
     }
 }
