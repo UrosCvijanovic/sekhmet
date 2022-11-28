@@ -22,7 +22,8 @@ public class Course {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User instructor_id;
+    @JoinColumn(name = "instructor_id", nullable = true)
+    private User instructor;
 
     @Column(name = "class_name", nullable = false, length = 45)
     private String class_name;
