@@ -31,7 +31,7 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 45)
     private String last_name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor")
+    @OneToMany(mappedBy = "instructor_id", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Course> instructorsClasses = new ArrayList<>();
 
     public User(Long id) {
