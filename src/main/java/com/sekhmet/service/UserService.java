@@ -11,5 +11,7 @@ public interface UserService {
     public void addNewUser(User user);
 
     public void deleteById(Long userId);
+
+    User getUserById(Long instructor_id);
 }
 

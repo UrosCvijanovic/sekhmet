@@ -16,7 +16,12 @@ public class UserController {
 
     @GetMapping
     public List<User> getUsers(){
-        return userService.getUsers();
+        try {
+            return userService.getUsers();
+        } catch (Exception e){
+            System.out.print(e.getMessage());
+        }
+        return null;
     }
 
     @PostMapping(

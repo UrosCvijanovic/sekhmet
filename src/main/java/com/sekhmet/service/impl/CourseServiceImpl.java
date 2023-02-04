@@ -5,6 +5,7 @@ import com.sekhmet.models.User;
 import com.sekhmet.repository.CourseRepository;
 import com.sekhmet.repository.UserRepository;
 import com.sekhmet.service.CourseService;
+import com.sekhmet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class CourseServiceImpl implements CourseService {
     public CourseRepository courseRepo;
     @Autowired
     public UserRepository userRepo;
+    @Autowired
+    public UserService userService;
 
     @Override
     public List<Course> getCourses() {
@@ -26,13 +29,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void createCourse(Course course) {
-        User instr_id = course.getInstructor_id();
-        Optional<User> userOptional = userRepo.findById(Long.valueOf(instr_id.getId()));
-
-        if(!userOptional.isPresent()){
-            throw new IllegalStateException("Wrong instuctor id");
-        }
-
         courseRepo.save(course);
     }
 }

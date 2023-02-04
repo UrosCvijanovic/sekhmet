@@ -21,10 +21,6 @@ public class UserServiceImpl implements UserService {
         return this.userRepo.getUsers();
     }
 
-    //public void saveUser() {
-        //User user = new User("fjsdjs@gmails.com", "Password", "David", "Wong");
-        //userRepo.save(user);
-    //}
     @Override
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepo.getUserByEmail(user.getEmail());
@@ -41,5 +37,10 @@ public class UserServiceImpl implements UserService {
         else{
             userRepo.deleteById(userId);
         }
+    }
+
+    @Override
+    public User getUserById(Long instructor_id) {
+        return userRepo.findById(instructor_id).orElse(null);
     }
 }

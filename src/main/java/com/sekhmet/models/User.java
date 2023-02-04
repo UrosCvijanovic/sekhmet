@@ -34,6 +34,9 @@ public class User {
     @OneToMany(mappedBy = "instructor_id", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Course> instructorsClasses = new ArrayList<>();
 
+    public User(Long id) {
+        this.id = id;
+    }
     @Override
     public String toString() {
         return "User{" +
