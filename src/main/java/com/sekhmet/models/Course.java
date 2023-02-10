@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Builder
@@ -26,4 +27,7 @@ public class Course {
 
     @Column(name = "class_name", nullable = false, length = 45)
     private String class_name;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Session> sessions;
 }

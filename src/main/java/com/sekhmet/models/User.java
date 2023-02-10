@@ -32,7 +32,10 @@ public class User {
     private String last_name;
 
     @OneToMany(mappedBy = "instructor_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Course> instructorsClasses = new ArrayList<>();
+    private List<Course> instructorsClasses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     public User(Long id) {
         this.id = id;
@@ -45,5 +48,12 @@ public class User {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 '}';
+    }
+    public List<Session> getSessions() {
+        List<Session> sessions = new ArrayList<>();
+        for (Enrollment enrollment : enrollments) {
+            sessions.add(enrollment.getSession());
+        }
+        return sessions;
     }
 }

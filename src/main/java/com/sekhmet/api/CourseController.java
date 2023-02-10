@@ -21,7 +21,7 @@ public class CourseController {
     private UserService userService;
 
     @PostMapping(value = "/createCourse", consumes = "application/json", produces = "application/json")
-    public void saveUser(@RequestBody Course course){
+    public void createCourse(@RequestBody Course course){
         User instructor = userService.getUserById(course.getInstructor_id().getId());
         course.setInstructor_id(instructor);
         courseService.createCourse(course);

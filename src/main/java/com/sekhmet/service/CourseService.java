@@ -8,4 +8,6 @@ public interface CourseService {
 
     public List<Course> getCourses();
     public void createCourse(Course course);
+
+    Course getCourseById(Long id);
 }
